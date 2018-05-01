@@ -1,0 +1,68 @@
+\documentclass[oneside]{memoir}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english, polish]{babel} 
+\usepackage{impactCV} 
+	
+
+\renewcommand{\legalText}{--- Legal text ---}
+	
+\begin{document}
+
+\makeHeader{\includegraphics[height=130pt, width=\maxwidth{120pt}]{RES/placeholder.png}}{Name Surname}{Address Line 1 \\ Address Line 2 \\ xxx-xxx-xxx \\ \mail{mail@example.com}\\ \url{https://github.com/exampleAddress}}
+
+\begin{sectionBox}{Education}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\end{sectionBox}
+
+\begin{sectionBox}{Experience}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\cvenrty{Date}{Title}{Institution, place}{Description.}
+\end{sectionBox}
+
+\begin{sectionBox}{Achievements}
+\cvenrty{Date}{}{}{Description.}
+\cvenrty{Date}{}{}{Description.}
+\cvenrty{Date}{}{}{Description.}
+\end{sectionBox}
+
+\begin{sectionBox}{Other activities}
+\cvenrty{Date}{}{}{Description.}
+\cvenrty{Date}{}{}{Description.}
+\cvenrty{Date}{}{}{Description.}
+\end{sectionBox}
+
+\begin{sectionBox}{Skills}
+\tcbsubtitle{Skill group 1}
+\cvskill{$\bullet\bullet\bullet$}{Some skills, tier 1}
+\cvskill{$\bullet\bullet\circ$}{Some skills, tier 2}
+\cvskill{$\bullet\circ\circ$}{Some skills, tier 3}
+\tcbsubtitle{Skill group 2}
+\cvskill{ }{Other skills}
+\end{sectionBox}
+
+\begin{sectionBox}{Languages}
+\cvlang{Lang1}{Proficiency}{-}
+\cvlang{Lang2}{Proficiency}{Description.}
+\cvlang{Lang3}{Proficiency}{Description.}
+\end{sectionBox}
+
+
+\begin{sectionBox}{Hobbies}
+\begin{multicols}{2}
+\begin{itemize}
+\item Hobby with short descritpion
+\item Hobby with short descritpion
+\item Hobby with short descritpion
+\item Hobby with short descritpion
+\item Hobby with short descritpion
+\end{itemize}
+\end{multicols}
+\end{sectionBox}
+
+\end{document}

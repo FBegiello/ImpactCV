@@ -1,0 +1,152 @@
+%----------Packages----------%
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+\usepackage{xcolor, colortbl}
+\usepackage[most]{tcolorbox}
+
+\usepackage{picture}
+\usepackage{eso-pic}
+
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{totcount}
+
+
+%----------Declarations----------%
+
+%--Counters and colours--%
+\newcounter{entryCounter} 
+\setcounter{entryCounter}{0}
+\regtotcounter{page}
+
+\definecolor{lightGray}{RGB}{188, 181, 181}
+\definecolor{whiteGray}{RGB}{230, 223, 223}
+\definecolor{darkGray}{RGB}{91, 82, 82}
+\definecolor{deepRed}{RGB}{135, 22, 28}
+
+%--Page setup--%
+\geometry{lmargin=0.25\paperwidth, 
+		rmargin=0.1\paperwidth, 
+		tmargin=0.075\paperheight, 
+		textheight=0.85\paperheight,
+		marginparwidth=0.07\paperwidth}
+		
+\pagecolor{lightGray}
+\AddToShipoutPictureBG{%
+ \AtPageLowerLeft{\color{darkGray}%
+ \rule{0.2\paperwidth}{\paperheight}}}
+ 
+\makepagestyle{topCounter} 
+\makeevenhead{topCounter}{}{}{\color{darkGray}\thepage/\total{page}} 
+\makeoddhead{topCounter}{}{}{\color{darkGray}\thepage/\total{page}}
+
+\newcommand{\legalText}{Legal text to inser at the end of doc}
+
+\makepagestyle{closingStyle} 
+\makeevenhead{closingStyle}{}{}{\color{darkGray}\thepage/\total{page}} 
+\makeoddhead{closingStyle}{}{}{\color{darkGray}\thepage/\total{page}}
+\makeevenfoot{closingStyle}{}{\color{darkGray}\center \tiny \legalText}{} 
+\makeoddfoot{closingStyle}{}{\color{darkGray}\center \tiny \legalText}{} 
+
+\pagestyle{topCounter}
+\AtEndDocument{\pagestyle{closingStyle}}
+
+%--Misc--%
+\newcommand{\mail}[1]{%
+\href{mailto:#1}{\texttt{#1}}
+}
+
+\makeatletter
+\def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
+\makeatother
+
+%--CV elements--%
+\newcommand{\makeHeader}[3]{%
+\begin{picture}(0,0)
+	\put(-130,-140){
+	\begin{headerBox}
+	\begin{tabular}{cc}
+    \parbox{140pt}{\begin{tcolorbox}[left=0pt,
+right=0pt,
+top=0pt,
+bottom=0pt,
+boxrule=5pt,
+colframe=white,
+colback=black,
+enlarge left by=0mm,
+arc=0pt,outer arc=0pt,]
+\center #1
+\end{tcolorbox}} &
+    \parbox{0.45\paperwidth}{\color{white}\flushright\vspace{-10pt} {\HUGE \textbf{#2}}\vspace{10pt}\\
+    {\Large	\textit{#3}}}\\
+	\end{tabular}
+	\end{headerBox}
+	}
+\end{picture}
+\par
+\vspace{155pt}
+}
+
+\newtcolorbox{headerBox}{    
+	frame code={}
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=deepRed,
+    height=160pt,
+    width=0.8\paperwidth,
+    enlarge left by=0mm,
+    boxsep=5pt,
+    arc=0pt,outer arc=0pt,} 
+
+\newtcolorbox{sectionBox}[1]{ 
+	enhanced jigsaw,   
+	title={#1},
+	fonttitle=\LARGE\bfseries,
+	subtitle style={colback=darkGray, fontupper={\center\bfseries}},
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=lightGray,
+	colbacktitle=deepRed,
+    width=0.92\textwidth,
+    enlarge left by=0mm,
+    boxsep=5pt,
+    boxrule=0pt,frame hidden,
+    arc=0pt,outer arc=0pt,
+    detach title,
+    boxed title style={arc=0pt,outer arc=0pt,boxrule=0pt,frame hidden},
+    attach boxed title to top left={xshift=-15pt, yshift=0pt}}  
+    
+\newcommand{\cvenrty}[4]{
+\stepcounter{entryCounter}
+\begin{tabular}{cc}
+\ifodd\theentryCounter \rowcolor{white}\else \rowcolor{whiteGray}\fi
+\parbox{50pt}{\textbf{#1}} &
+\parbox{280pt}{\vspace{5pt}\textbf{#2} #3\\ {\footnotesize #4}\vspace{5pt}} 
+\end{tabular}
+}
+
+\newcommand{\cvskill}[2]{
+\stepcounter{entryCounter}
+\begin{tabular}{rcl}
+\ifodd\theentryCounter \rowcolor{white}\else \rowcolor{whiteGray}\fi
+\parbox{50pt}{\textbf{#1}} &
+\parbox{280pt}{\vspace{5pt}#2\vspace{5pt}} 
+\end{tabular}
+}
+
+\newcommand{\cvlang}[3]{
+\stepcounter{entryCounter}
+\begin{tabular}{rcl}
+\ifodd\theentryCounter \rowcolor{white}\else \rowcolor{whiteGray}\fi
+\parbox{50pt}{\textbf{#1}} &
+\parbox{100pt}{\vspace{5pt}\textbf{#2}\vspace{5pt}} 
+\parbox{177pt}{\vspace{5pt}#3\vspace{5pt}} 
+\end{tabular}
+}
